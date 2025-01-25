@@ -71,9 +71,9 @@ CREATE TABLE uber_ride_bangalore (
 
 ```sql
 COPY uber_ride_bangalore (
-    Date, Time, Booking_ID, Booking_Status, Customer_ID, Vehicle_Type, Pickup_Location, Drop_Location, Avg_VTAT, Avg_CTAT,
-    Cancelled_Rides_By_Customer_Reason, Cancelled_Rides_By_Driver_Reason, Incomplete_Ride_Reason, Booking_Value, Payment_Method,
-    Ride_Distance, Driver_Ratings, Customer_Ratings
+    Date, Time, Booking_ID, Booking_Status, Customer_ID, Vehicle_Type, Pickup_Location, Drop_Location,
+    Avg_VTAT, Avg_CTAT, Cancelled_Rides_By_Customer_Reason, Cancelled_Rides_By_Driver_Reason,
+    Incomplete_Ride_Reason, Booking_Value, Payment_Method, Ride_Distance, Driver_Ratings, Customer_Ratings
 )
 FROM '/path/to/uber_ride_bangalore.csv' -- Replace with the actual file path
 DELIMITER ',' 
