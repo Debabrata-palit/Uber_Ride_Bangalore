@@ -8,7 +8,7 @@ This project analyzes ride data from **Uber** in **Bangalore**, for **January 20
 
 The dataset contains 200,000 records and 18 columns. Here's an overview of the data:
 
-> Column Descriptions:
+> **Column Descriptions:**
 
 1. `Date:` _The date of the ride._
 2. `Time:` _The time of the ride._
@@ -29,7 +29,7 @@ The dataset contains 200,000 records and 18 columns. Here's an overview of the d
 17. `Driver Ratings:` _Ratings given by the driver._
 18. `Customer Ratings:` _Ratings given by the customer._
 
-> Key Observations:
+> **Key Observations:**
 
 - The dataset includes ride metadata, payment details, and reasons for cancellations or incomplete rides.
 - Missing data is present in several columns, especially for reasons related to cancellations, payment method and ratings.
