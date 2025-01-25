@@ -39,6 +39,6 @@ The dataset contains 200,000 records and 18 columns. Here's an overview of the d
 ## Tech Stack
 
 - **Language:** `SQL`
-- **Database:** ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-- **Tools:** ![pgAdmin](https://img.shields.io/badge/pgAdmin-316192?style=for-the-badge&logo=pgAdmin&logoColor=white), ![PowerBI](https://img.shields.io/badge/PowerBI-F2C811?style=for-the-badge&logo=Power%20BI&logoColor=white)
+- **Database:** `PostgreSQL`
+- **Tools:** `pgAdmin`, `PowerBI`
 
