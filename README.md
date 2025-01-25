@@ -45,7 +45,7 @@ The dataset contains 200,000 records and 18 columns. Here's an overview of the d
 ## SQL Table Creation Query
 
 ```sql
-CREATE TABLE uber_ride_details_bangalore (
+CREATE TABLE uber_ride_bangalore (
     Date DATE NOT NULL,
     Time TIME NOT NULL,
     Booking_ID VARCHAR(20) PRIMARY KEY,
@@ -70,7 +70,7 @@ CREATE TABLE uber_ride_details_bangalore (
 ## Loading Data into PostgreSQL
 
 ```sql
-COPY uber_ride_bangalore(
+COPY uber_ride_bangalore (
     Date, Time, Booking_ID, Booking_Status, Customer_ID, Vehicle_Type, Pickup_Location, Drop_Location, Avg_VTAT, Avg_CTAT,
     Cancelled_Rides_By_Customer_Reason, Cancelled_Rides_By_Driver_Reason, Incomplete_Ride_Reason, Booking_Value, Payment_Method,
     Ride_Distance, Driver_Ratings, Customer_Ratings
