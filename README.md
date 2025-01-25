@@ -2,7 +2,7 @@
 
 This project analyzes ride data from **Uber** in **Bangalore**, for **January 2024**, focusing on metrics like ride completion, cancellation reasons, revenue, and ratings. The analysis leverages **PostgreSQL** for database management and querying to provide actionable insights into ride patterns and customer behavior. Then **PowerBI** is used for visualization and generating reports.
 
-![Uber](https://github.com/user-attachments/assets/cdcb5741-1255-448d-a5fa-f9ab296ca2b5)
+![Uber Bengaluru](https://github.com/user-attachments/assets/77998053-4ac7-4cd4-a413-d2d2e13d2fc8)
 
 ## Dataset Overview
 
