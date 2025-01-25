@@ -35,6 +35,7 @@ The dataset contains 200,000 records and 18 columns. Here's an overview of the d
 - Missing data is present in several columns, especially for reasons related to cancellations, payment method and ratings.
   - `Cancelled Rides by Customer Reason`, `Cancelled Rides by Driver Reason`, `Incomplete Ride Reason`: These columns represent specific events (cancellations or incomplete rides). Missing data likely means the ride was completed successfully or cancelled because of other reasons (e.g., if the ride was cancelled by customer then the 'Cancelled Rides by Driver Reason' and 'Incomplete Ride Reason' columns remain blank)
   - `Payment Method`, `Driver Ratings` and `Customer Ratings`: Missing data indicate that the rides were not successful.
+- There are 7 unique vehicle types and 51 unique pickup and drop locations.
 
 ## Tech Stack
 
