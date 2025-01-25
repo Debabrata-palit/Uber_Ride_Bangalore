@@ -42,3 +42,41 @@ The dataset contains 200,000 records and 18 columns. Here's an overview of the d
 - **Database:** `PostgreSQL`
 - **Tools:** `pgAdmin`, `PowerBI`
 
+## SQL Table Creation Query
+
+```sql
+CREATE TABLE uber_ride_details_bangalore (
+    Date DATE NOT NULL,
+    Time TIME NOT NULL,
+    Booking_ID VARCHAR(20) PRIMARY KEY,
+    Booking_Status VARCHAR(20) NOT NULL,
+    Customer_ID VARCHAR(20) NOT NULL,
+    Vehicle_Type VARCHAR(20) NOT NULL,
+    Pickup_Location VARCHAR(50) NOT NULL,
+    Drop_Location VARCHAR(50) NOT NULL,
+    Avg_VTAT FLOAT NOT NULL,
+    Avg_CTAT FLOAT NOT NULL,
+    Cancelled_Rides_By_Customer_Reason VARCHAR(100),
+    Cancelled_Rides_By_Driver_Reason VARCHAR(100),
+    Incomplete_Ride_Reason VARCHAR(100),
+    Booking_Value FLOAT NOT NULL,
+    Payment_Method VARCHAR(20),
+    Ride_Distance FLOAT NOT NULL,
+    Driver_Ratings FLOAT,
+    Customer_Ratings FLOAT
+);
+```
+
+## Loading Data into PostgreSQL
+
+```sql
+COPY uber_ride_bangalore(
+    Date, Time, Booking_ID, Booking_Status, Customer_ID, Vehicle_Type, Pickup_Location, Drop_Location, Avg_VTAT, Avg_CTAT,
+    Cancelled_Rides_By_Customer_Reason, Cancelled_Rides_By_Driver_Reason, Incomplete_Ride_Reason, Booking_Value, Payment_Method,
+    Ride_Distance, Driver_Ratings, Customer_Ratings
+)
+FROM '/path/to/uber_ride_bangalore.csv' -- Replace with the actual file path
+DELIMITER ',' 
+CSV HEADER;
+```
+
