@@ -55,16 +55,16 @@ CREATE TABLE uber_ride_bangalore (
     Vehicle_Type VARCHAR(20) NOT NULL,
     Pickup_Location VARCHAR(50) NOT NULL,
     Drop_Location VARCHAR(50) NOT NULL,
-    Avg_VTAT FLOAT NOT NULL,
-    Avg_CTAT FLOAT NOT NULL,
+    Avg_VTAT DECIMAL(10,2) NOT NULL,
+    Avg_CTAT DECIMAL(10,2) NOT NULL,
     Cancelled_Rides_By_Customer_Reason VARCHAR(100),
     Cancelled_Rides_By_Driver_Reason VARCHAR(100),
     Incomplete_Ride_Reason VARCHAR(100),
-    Booking_Value FLOAT NOT NULL,
+    Booking_Value DECIMAL(10,2) NOT NULL,
     Payment_Method VARCHAR(20),
-    Ride_Distance FLOAT NOT NULL,
-    Driver_Ratings FLOAT,
-    Customer_Ratings FLOAT
+    Ride_Distance DECIMAL(10,2) NOT NULL,
+    Driver_Ratings DECIMAL(10,1),
+    Customer_Ratings DECIMAL(10,1)
 );
 ```
 
