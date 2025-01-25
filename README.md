@@ -1,6 +1,6 @@
 # Uber Ride Analysis - Bangalore
 
-This project analyzes ride data from **Uber** in **Bangalore**, for **January 2024**, focusing on metrics like ride completion, cancellation reasons, revenue, and ratings. The analysis leverages **PostgreSQL** for database management and querying to provide actionable insights into ride patterns and customer behavior.
+This project analyzes ride data from **Uber** in **Bangalore**, for **January 2024**, focusing on metrics like ride completion, cancellation reasons, revenue, and ratings. The analysis leverages **PostgreSQL** for database management and querying to provide actionable insights into ride patterns and customer behavior. Then **PowerBI** is used for visualization and generating reports.
 
 ![image](https://github.com/user-attachments/assets/bb0c99ec-9a45-4d8f-b0e0-ef9a9dd1dee6)
 
