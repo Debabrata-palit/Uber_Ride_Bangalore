@@ -46,11 +46,12 @@ The dataset contains 200,000 records and 18 columns. Here's an overview of the d
 ## SQL Table Creation Query
 
 ```sql
+DROP TABLE IF EXISTS uber_ride_bangalore;
 CREATE TABLE uber_ride_bangalore (
     Date DATE NOT NULL,
     Time TIME NOT NULL,
     Booking_ID VARCHAR(20) PRIMARY KEY,
-    Booking_Status VARCHAR(20) NOT NULL,
+    Booking_Status VARCHAR(50) NOT NULL,
     Customer_ID VARCHAR(20) NOT NULL,
     Vehicle_Type VARCHAR(20) NOT NULL,
     Pickup_Location VARCHAR(50) NOT NULL,
