@@ -46,39 +46,60 @@ The dataset contains 200,000 records and 18 columns. Here's an overview of the d
 ## SQL Table Creation Query
 
 ```sql
-DROP TABLE IF EXISTS uber_ride_bangalore;
-CREATE TABLE uber_ride_bangalore (
+DROP TABLE IF EXISTS booking_details;
+DROP TABLE IF EXISTS ride_details;
+DROP TABLE IF EXISTS unsuccessful_rides;
+
+CREATE TABLE booking_details (
     Date DATE NOT NULL,
     Time TIME NOT NULL,
     Booking_ID VARCHAR(20) PRIMARY KEY,
-    Booking_Status VARCHAR(50) NOT NULL,
-    Customer_ID VARCHAR(20) NOT NULL,
+    Booking_Status VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE ride_details (
+	Booking_ID VARCHAR(20) PRIMARY KEY,
     Vehicle_Type VARCHAR(20) NOT NULL,
     Pickup_Location VARCHAR(50) NOT NULL,
     Drop_Location VARCHAR(50) NOT NULL,
     Avg_VTAT DECIMAL(10,2) NOT NULL,
     Avg_CTAT DECIMAL(10,2) NOT NULL,
-    Cancelled_Rides_By_Customer_Reason VARCHAR(100),
-    Cancelled_Rides_By_Driver_Reason VARCHAR(100),
-    Incomplete_Ride_Reason VARCHAR(100),
-    Booking_Value DECIMAL(10,2) NOT NULL,
+    Price DECIMAL(10,2) NOT NULL,
     Payment_Method VARCHAR(20),
     Ride_Distance DECIMAL(10,2) NOT NULL,
-    Driver_Ratings DECIMAL(10,1),
     Customer_Ratings DECIMAL(10,1)
+);
+
+CREATE TABLE unsuccessful_rides (
+	Booking_ID VARCHAR(20) PRIMARY KEY,
+    Cancelled_Rides_By_Customer_Reason VARCHAR(100),
+    Cancelled_Rides_By_Driver_Reason VARCHAR(100),
+    Incomplete_Ride_Reason VARCHAR(100)
 );
 ```
 
 ## Loading Data into PostgreSQL
 
 ```sql
-COPY uber_ride_bangalore (
-  Date, Time, Booking_ID, Booking_Status, Customer_ID, Vehicle_Type, Pickup_Location, Drop_Location,
-  Avg_VTAT, Avg_CTAT, Cancelled_Rides_By_Customer_Reason, Cancelled_Rides_By_Driver_Reason,
-  Incomplete_Ride_Reason, Booking_Value, Payment_Method, Ride_Distance, Driver_Ratings,
-  Customer_Ratings
+COPY booking_details (Date, Time, Booking_ID, Booking_Status)
+FROM 'C:\Users\DEBABRATA\OneDrive\Desktop\Uber_Ride_Bangalore\booking_details.csv'
+DELIMITER ',' 
+CSV HEADER;
+
+COPY ride_details (
+	Booking_ID, Vehicle_Type, Pickup_Location, Drop_Location,
+	Avg_VTAT, Avg_CTAT, Price, Payment_Method, Ride_Distance,
+	Customer_Ratings
 )
-FROM '/path/to/uber_ride_bangalore.csv' -- Replace with the actual file path
+FROM 'C:\Users\DEBABRATA\OneDrive\Desktop\Uber_Ride_Bangalore\ride_details.csv'
+DELIMITER ',' 
+CSV HEADER;
+
+COPY unsuccessful_rides (
+	Booking_ID, Cancelled_Rides_By_Customer_Reason,
+	Cancelled_Rides_By_Driver_Reason, Incomplete_Ride_Reason
+)
+FROM 'C:\Users\DEBABRATA\OneDrive\Desktop\Uber_Ride_Bangalore\unsuccessful_rides.csv'
 DELIMITER ',' 
 CSV HEADER;
 ```
