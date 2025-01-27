@@ -4,34 +4,44 @@ This project analyzes ride data from **Uber** in **Bangalore**, for **January 20
 
 ![Uber Bengaluru](https://github.com/user-attachments/assets/77998053-4ac7-4cd4-a413-d2d2e13d2fc8)
 
-## Dataset Overview
+## Datasets Overview
 
-The dataset contains 200,000 records and 18 columns. Here's an overview of the data:
+We have 3 datasets:
+- `booking_details`: it consists of 200,000 records across 4 columns
+- `ride_details`: it consists of 200,000 records across 10 columns
+- `unsuccessful_rides`: it consists of 75,836 records across 4 columns
 
 > **Column Descriptions:**
 
-1. `Date:` _The date of the ride._
-2. `Time:` _The time of the ride._
-3. `Booking ID:` _Unique identifier for each booking._
-4. `Booking Status:` _Status of the ride (e.g., Successful, Cancelled, Incomplete)._
-5. `Customer ID:` _Unique identifier for the customer._
-6. `Vehicle Type:` _Type of vehicle used for the ride._
-7. `Pickup Location:` _Location where the ride started._
-8. `Drop Location:` _Location where the ride ended._
-9. `Avg VTAT (Vehicle Turnaround Time):` _Average time taken by the vehicle to start the ride._
-10. `Avg CTAT (Customer Turnaround Time):` _Average time taken by the customer to board the vehicle._
-11. `Cancelled Rides by Customer Reason:` _Reason for cancellation by the customer._
-12. `Cancelled Rides by Driver Reason:` _Reason for cancellation by the driver._
-13. `Incomplete Ride Reason:` _Reason for an incomplete ride._
-14. `Booking Value:` _The monetary value of the booking._
-15. `Payment Method:` _Payment method used (e.g., UPI, Wallet, Cash)._
-16. `Ride Distance:` _Distance covered during the ride._
-17. `Driver Ratings:` _Ratings given by the driver._
-18. `Customer Ratings:` _Ratings given by the customer._
+- **booking_details**
+
+	1. `Date:` _The date of the ride._
+	2. `Time:` _The time of the ride._
+	3. `Booking ID:` _Unique identifier for each booking._
+	4. `Booking Status:` _Status of the ride (e.g., Successful, Cancelled, Incomplete)._
+
+- **ride_details**
+
+	1. `Booking ID:` _Unique identifier for each booking._
+ 	2. `Vehicle Type:` _Type of vehicle used for the ride._
+	3. `Pickup Location:` _Location where the ride started._
+	4. `Drop Location:` _Location where the ride ended._
+	5. `Avg VTAT (Vehicle Turnaround Time):` _Average time taken by the vehicle to start the ride._
+	6. `Avg CTAT (Customer Turnaround Time):` _Average time taken by the customer to board the vehicle._
+	7. `Price:` _The monetary value of the booking._
+	8. `Payment Method:` _Payment method used (e.g., UPI, Wallet, Cash)._
+	9. `Ride Distance:` _Distance covered during the ride._
+	10. `Customer Ratings:` _Ratings given by the customer._
+
+- **unsuccessful_rides**
+	1. `Booking ID:` _Unique identifier for each booking._
+  	2. `Cancelled Rides by Customer Reason:` _Reason for cancellation by the customer._
+	3. `Cancelled Rides by Driver Reason:` _Reason for cancellation by the driver._
+	4. `Incomplete Ride Reason:` _Reason for an incomplete ride._
 
 > **Key Observations:**
 
-- The dataset includes ride metadata, payment details, and reasons for cancellations or incomplete rides.
+- The datasets include booking details, ride metadata, and reasons for cancellations or incomplete rides.
 - Missing data is present in several columns, especially for reasons related to cancellations, payment method and ratings.
   - `Cancelled Rides by Customer Reason`, `Cancelled Rides by Driver Reason`, `Incomplete Ride Reason`: These columns represent specific events (cancellations or incomplete rides). Missing data likely means the ride was completed successfully or cancelled because of other reasons (e.g., if the ride was cancelled by customer then the 'Cancelled Rides by Driver Reason' and 'Incomplete Ride Reason' columns remain blank)
   - `Payment Method`, `Driver Ratings` and `Customer Ratings`: Missing data indicate that the rides were not successful.
