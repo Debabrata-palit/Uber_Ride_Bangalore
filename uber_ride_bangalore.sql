@@ -115,6 +115,12 @@ group by pickup_location
 order by total_revenue desc
 limit 5
 
+-- Average Revenue Gained from Each Vehicle-Type
+select vehicle_type, round(avg(price),2) as avg_revenue
+from ride_details
+group by vehicle_type
+order by avg_revenue desc
+
 -- Peak Time Analysis
 select 
     concat(
