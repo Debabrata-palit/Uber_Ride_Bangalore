@@ -92,7 +92,7 @@ CREATE TABLE unsuccessful_rides (
 
 ```sql
 COPY booking_details (Date, Time, Booking_ID, Booking_Status)
-FROM 'C:\Users\DEBABRATA\OneDrive\Desktop\Uber_Ride_Bangalore\booking_details.csv'
+FROM 'path\to\booking_details.csv' -- Replace with the actual file path
 DELIMITER ',' 
 CSV HEADER;
 
@@ -101,7 +101,7 @@ COPY ride_details (
 	Avg_VTAT, Avg_CTAT, Price, Payment_Method, Ride_Distance,
 	Customer_Ratings
 )
-FROM 'C:\Users\DEBABRATA\OneDrive\Desktop\Uber_Ride_Bangalore\ride_details.csv'
+FROM 'path\to\ride_details.csv' -- Replace with the actual file path
 DELIMITER ',' 
 CSV HEADER;
 
@@ -109,7 +109,7 @@ COPY unsuccessful_rides (
 	Booking_ID, Cancelled_Rides_By_Customer_Reason,
 	Cancelled_Rides_By_Driver_Reason, Incomplete_Ride_Reason
 )
-FROM 'C:\Users\DEBABRATA\OneDrive\Desktop\Uber_Ride_Bangalore\unsuccessful_rides.csv'
+FROM 'path\to\unsuccessful_rides.csv' -- Replace with the actual file path
 DELIMITER ',' 
 CSV HEADER;
 ```
