@@ -68,7 +68,7 @@ CREATE TABLE booking_details (
 );
 
 CREATE TABLE ride_details (
-	Booking_ID VARCHAR(20) PRIMARY KEY,
+    Booking_ID VARCHAR(20) PRIMARY KEY,
     Vehicle_Type VARCHAR(20) NOT NULL,
     Pickup_Location VARCHAR(50) NOT NULL,
     Drop_Location VARCHAR(50) NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE ride_details (
 );
 
 CREATE TABLE unsuccessful_rides (
-	Booking_ID VARCHAR(20) PRIMARY KEY,
+    Booking_ID VARCHAR(20) PRIMARY KEY,
     Cancelled_Rides_By_Customer_Reason VARCHAR(100),
     Cancelled_Rides_By_Driver_Reason VARCHAR(100),
     Incomplete_Ride_Reason VARCHAR(100)
