@@ -1,6 +1,6 @@
 # Uber Ride Analysis - Bangalore
 
-This project analyzes ride data from **Uber** in **Bangalore**, for **January 2024**, focusing on metrics like ride completion, cancellation reasons, revenue, and ratings. The analysis leverages **PostgreSQL** for database management and querying to provide actionable insights into ride patterns and customer behavior. Then **PowerBI** is used for visualization and generating reports.
+This project analyzes ride data from **Uber** in **Bangalore**, for **January 2024**, focusing on metrics like ride completion, cancellation reasons, revenue, and ratings. The analysis leverages **PostgreSQL** for database management and querying to provide actionable insights into ride patterns and customer behavior.
 
 ![Uber Bengaluru](https://github.com/user-attachments/assets/77998053-4ac7-4cd4-a413-d2d2e13d2fc8)
 
@@ -51,7 +51,7 @@ We have 3 datasets:
 
 - **Language:** `SQL`
 - **Database:** `PostgreSQL`
-- **Tools:** `pgAdmin`, `PowerBI`
+- **Tools:** `pgAdmin`
 
 ## SQL Table Creation Query
 
@@ -82,6 +82,7 @@ CREATE TABLE ride_details (
 
 CREATE TABLE unsuccessful_rides (
     Booking_ID VARCHAR(20) PRIMARY KEY,
+    Booking_Status VARCHAR(50) NOT NULL,
     Cancelled_Rides_By_Customer_Reason VARCHAR(100),
     Cancelled_Rides_By_Driver_Reason VARCHAR(100),
     Incomplete_Ride_Reason VARCHAR(100)
@@ -106,7 +107,7 @@ DELIMITER ','
 CSV HEADER;
 
 COPY unsuccessful_rides (
-	Booking_ID, Cancelled_Rides_By_Customer_Reason,
+	Booking_ID, Booking_Status, Cancelled_Rides_By_Customer_Reason,
 	Cancelled_Rides_By_Driver_Reason, Incomplete_Ride_Reason
 )
 FROM 'path\to\unsuccessful_rides.csv' -- Replace with the actual file path
