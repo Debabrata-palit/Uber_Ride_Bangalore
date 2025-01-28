@@ -48,6 +48,12 @@ select vehicle_type, count(*) as ride_count
 from ride_details
 group by vehicle_type
 
+-- Avg VTAT and Avg CTAT for Each Vehicle
+select vehicle_type, round(avg(avg_vtat), 2) as avg_vtat,
+	round(avg(avg_ctat), 2) as avg_ctat
+from ride_details
+group by vehicle_type
+
 -- Top Pickup Locations
 select pickup_location, count(*) as ride_count
 from ride_details
@@ -164,4 +170,14 @@ select mbd.date, mbd.total_bookings,
 from most_booked_date mbd
 join succesful_bookings sb using (date)
 order by mbd.total_bookings desc
+limit 1
+
+-- Date with Most Number of High Ratings (4 or more)
+select b.date, count(*) as high_rated_ride_count
+from booking_details b
+join ride_details r using(booking_id)
+where b.booking_status = 'Success'
+		and r.customer_ratings >= 4
+group by b.date
+order by high_rated_ride_count desc
 limit 1
