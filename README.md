@@ -6,10 +6,7 @@ This project analyzes ride data from **Uber** in **Bangalore**, for **January 20
 
 ## Datasets Overview
 
-We have 3 datasets:
-- `booking_details`: it consists of 200,000 records across 4 columns
-- `ride_details`: it consists of 200,000 records across 10 columns
-- `unsuccessful_rides`: it consists of 75,836 records across 4 columns
+We have 3 datasets: `booking_details` `ride_details` `unsuccessful_rides`
 
 > **Column Descriptions:**
 
@@ -35,12 +32,14 @@ We have 3 datasets:
 
 - **unsuccessful_rides**
 	1. `Booking ID:` _Unique identifier for each booking._
-  	2. `Cancelled Rides by Customer Reason:` _Reason for cancellation by the customer._
-	3. `Cancelled Rides by Driver Reason:` _Reason for cancellation by the driver._
-	4. `Incomplete Ride Reason:` _Reason for an incomplete ride._
+	2. `Booking Status:` _Status of the ride (e.g., Successful, Cancelled, Incomplete)._
+  	3. `Cancelled Rides by Customer Reason:` _Reason for cancellation by the customer._
+	4. `Cancelled Rides by Driver Reason:` _Reason for cancellation by the driver._
+	5. `Incomplete Ride Reason:` _Reason for an incomplete ride._
 
 > **Key Observations:**
 
+- Each dataset contains 200,000 records.
 - The datasets include booking details, ride metadata, and reasons for cancellations or incomplete rides.
 - Missing data is present in several columns, especially for reasons related to cancellations, payment method and ratings.
   - `Cancelled Rides by Customer Reason`, `Cancelled Rides by Driver Reason`, `Incomplete Ride Reason`: These columns represent specific events (cancellations or incomplete rides). Missing data likely means the ride was completed successfully or cancelled because of other reasons (e.g., if the ride was cancelled by customer then the 'Cancelled Rides by Driver Reason' and 'Incomplete Ride Reason' columns remain blank)
