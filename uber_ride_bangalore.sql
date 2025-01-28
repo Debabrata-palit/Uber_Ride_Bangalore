@@ -1,3 +1,5 @@
+/* Uber Ride Analysis - Bangalore (January 2024) */
+
 select * from booking_details
 select * from ride_details
 select * from unsuccessful_rides
