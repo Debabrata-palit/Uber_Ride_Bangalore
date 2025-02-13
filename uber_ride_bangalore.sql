@@ -1,185 +1,199 @@
 /* Uber Ride Analysis - Bangalore (January 2024) */
 
-select * from booking_details
-select * from ride_details
-select * from unsuccessful_rides
+SELECT * FROM booking_details  
+SELECT * FROM ride_details  
+SELECT * FROM unsuccessful_rides  
 
--- Ride Completion Count
-select count(*) as completed_rides
-from booking_details
-where booking_status ='Success'
+-- Count and Percentage of Each Booking Status (Successful, Cancelled, Incomplete)  
 
--- Cancelled Rides Count
-select count(*) as cancelled_rides
-from booking_details
-where booking_status not in ('Success', 'Incomplete')
+SELECT booking_status,  
+	COUNT(booking_status) AS ride_count,  
+	ROUND((COUNT(booking_status) * 1.0  
+	/(SELECT COUNT(*) FROM booking_details)) * 100, 2) AS rides_percentage  
+FROM booking_details  
+WHERE booking_status IN ('Success', 'Incomplete')  
+GROUP BY booking_status  
+UNION  
+SELECT 'Cancelled' AS booking_status,  
+	 COUNT(booking_status) AS ride_count,  
+	 ROUND((COUNT(booking_status) * 1.0  
+	 /(SELECT COUNT(*) FROM booking_details)) * 100, 2) AS rides_percentage  
+FROM booking_details  
+WHERE booking_status LIKE ('Cancelled%')  
 
--- Cancellation Reason Breakdown
+-- Cancellation Reason Breakdown  
 
--- (a) Rides Cancelled by Customer
-select cancelled_rides_by_customer_reason, 
-	count(*) as customer_cancel_count
-from unsuccessful_rides
-where cancelled_rides_by_customer_reason is not null
-group by cancelled_rides_by_customer_reason
-order by customer_cancel_count desc
+-- (a) Rides Cancelled by Customer  
 
--- (b) Rides Cancelled by Customer
-select cancelled_rides_by_driver_reason, 
-	count(*) as driver_cancel_count
-from unsuccessful_rides
-where cancelled_rides_by_driver_reason is not null
-group by cancelled_rides_by_driver_reason
-order by driver_cancel_count desc
+SELECT cancelled_rides_by_customer_reason,  
+ 	COUNT(*) AS customer_cancel_count  
+FROM unsuccessful_rides  
+WHERE cancelled_rides_by_customer_reason IS NOT NULL  
+GROUP BY cancelled_rides_by_customer_reason  
+ORDER BY customer_cancel_count DESC  
 
--- Incomplete Rides Count
-select count(*) as incomplete_rides
-from booking_details
-where booking_status = 'Incomplete'
+-- (b) Rides Cancelled by Driver  
 
--- Incomplete Ride Reason Breakdown
-select incomplete_ride_reason, 
-	count(*) as incomplete_ride_count
-from unsuccessful_rides
-where incomplete_ride_reason is not null
-group by incomplete_ride_reason
-order by incomplete_ride_count desc
+SELECT cancelled_rides_by_driver_reason,  
+ 	COUNT(*) AS driver_cancel_count  
+FROM unsuccessful_rides  
+WHERE cancelled_rides_by_driver_reason IS NOT NULL  
+GROUP BY cancelled_rides_by_driver_reason  
+ORDER BY driver_cancel_count DESC  
 
--- Vehicle-Type Breakdown
-select vehicle_type, count(*) as ride_count
-from ride_details
-group by vehicle_type
+-- Incomplete Ride Reason Breakdown  
 
--- Avg VTAT and Avg CTAT for Each Vehicle
-select vehicle_type, round(avg(avg_vtat), 2) as avg_vtat,
-	round(avg(avg_ctat), 2) as avg_ctat
-from ride_details
-group by vehicle_type
+SELECT incomplete_ride_reason,  
+ 	COUNT(*) AS incomplete_ride_count  
+FROM unsuccessful_rides  
+WHERE incomplete_ride_reason IS NOT NULL  
+GROUP BY incomplete_ride_reason  
+ORDER BY incomplete_ride_count DESC  
 
--- Top Pickup Locations
-select pickup_location, count(*) as ride_count
-from ride_details
-group by pickup_location
-order by ride_count desc
-limit 5
+-- Vehicle-Type Breakdown  
 
--- Top Drop Locations
-select drop_location, count(*) as ride_count
-from ride_details
-group by drop_location
-order by ride_count desc
-limit 5
+SELECT vehicle_type, COUNT(*) AS ride_count  
+FROM ride_details  
+GROUP BY vehicle_type  
 
--- Average Booking Value by Vehicle Type
-select vehicle_type, round(avg(price), 2) as avg_booking_value
-from ride_details
-group by vehicle_type
-order by avg_booking_value desc
+-- Avg VTAT and Avg CTAT for Each Vehicle  
 
--- Payment Method Popularity
-select r.payment_method, count(*) as ride_count
-from ride_details r
-join booking_details b using(booking_id)
-where b.booking_status = 'Success'
-group by r.payment_method
-order by ride_count desc
+SELECT vehicle_type, ROUND(AVG(avg_vtat), 2) AS avg_vtat,  
+ 	ROUND(AVG(avg_ctat), 2) AS avg_ctat  
+FROM ride_details  
+GROUP BY vehicle_type  
 
--- Customer Rating Analysis
+-- Top Pickup Locations  
 
--- (a) Vehicles with Most Number of High Ratings (4 or more)
-select r.vehicle_type, 
-	count(*) as high_rated_ride_count
-from ride_details r
-join booking_details b using (booking_id)
-where b.booking_status = 'Success'
-	and r.customer_ratings >= 4
-group by r.vehicle_type
-order by high_rated_ride_count desc
+SELECT pickup_location, COUNT(*) AS ride_count  
+FROM ride_details  
+GROUP BY pickup_location  
+ORDER BY ride_count DESC  
+LIMIT 5  
 
--- (b) Vehicles with Most Number of Below Average Ratings
-select r.vehicle_type, 
-	count(*) as below_avg_rated_ride_count
-from ride_details r
-join booking_details b using (booking_id)
-where b.booking_status = 'Success'
-	and r.customer_ratings < (select avg(customer_ratings)
-		from ride_details)
-group by r.vehicle_type
-order by below_avg_rated_ride_count desc
+-- Top Drop Locations  
 
--- (c) Average Customer Ratings by Vehicle Type
-select r.vehicle_type,
-	round(avg(r.customer_ratings),1) as avg_customer_ratings
-from ride_details r
-join booking_details b using(booking_id)
-where b.booking_status = 'Success'
-group by r.vehicle_type
-order by avg_customer_ratings desc
+SELECT drop_location, COUNT(*) AS ride_count  
+FROM ride_details  
+GROUP BY drop_location  
+ORDER BY ride_count DESC  
+LIMIT 5  
 
--- Revenue from Top Pickup Locations
-select pickup_location, sum(price) as total_revenue
-from ride_details
-group by pickup_location
-order by total_revenue desc
-limit 5
+-- Average Booking Value by Vehicle Type  
 
--- Average Revenue Gained from Each Vehicle-Type
-select vehicle_type, round(avg(price),2) as avg_revenue
-from ride_details
-group by vehicle_type
-order by avg_revenue desc
+SELECT vehicle_type, ROUND(AVG(price), 2) AS avg_booking_value  
+FROM ride_details  
+GROUP BY vehicle_type  
+ORDER BY avg_booking_value DESC  
 
--- Peak Time Analysis
-select 
-    concat(
-        lpad(extract(hour from time)::text, 2, '0'), 
-        ':00 - ', 
-        lpad(extract(hour from time)::text, 2, '0'), 
-        ':59'
-    ) as time_range,
-    count(*) as ride_count
-from booking_details
-group by extract(hour from time)
-order by ride_count desc
+-- Payment Method Popularity  
 
--- Percentage of Each Booking Status
-select booking_status, round((count(booking_status)*1.0
-	/(select count(*)from booking_details))*100, 2) as rides_percentage
-from booking_details
-group by booking_status
+SELECT r.payment_method, COUNT(*) AS ride_count  
+FROM ride_details r  
+JOIN booking_details b USING (booking_id)  
+WHERE b.booking_status = 'Success'  
+GROUP BY r.payment_method  
+ORDER BY ride_count DESC  
 
--- On Which Date in January, the Most Number of Rides were Booked
--- and What were the Total Successful Bookings and Average Customer Ratings on That Day
-with most_booked_date as(
-	select b.date, count(*) as total_bookings
-	from booking_details b
-	join ride_details r using(booking_id)
-	group by b.date
-),
+-- Customer Rating Analysis  
 
-succesful_bookings as(
-	select b.date, count(*) as successful_bookings,
-		round(avg(r.customer_ratings),1) as avg_customer_ratings
-	from booking_details b
-	join ride_details r using(booking_id)
-	where b.booking_status = 'Success'
-	group by b.date
-)
+-- (a) Vehicles with Most Number of High Ratings (4 or more)  
 
-select mbd.date, mbd.total_bookings,
-	sb.successful_bookings,
-	sb.avg_customer_ratings
-from most_booked_date mbd
-join succesful_bookings sb using (date)
-order by mbd.total_bookings desc
-limit 1
+SELECT r.vehicle_type,  
+ 	COUNT(*) AS high_rated_ride_count  
+FROM ride_details r  
+JOIN booking_details b USING (booking_id)  
+WHERE b.booking_status = 'Success'  
+ 	AND r.customer_ratings >= 4  
+GROUP BY r.vehicle_type  
+ORDER BY high_rated_ride_count DESC  
 
--- Date with Most Number of High Ratings (4 or more)
-select b.date, count(*) as high_rated_ride_count
-from booking_details b
-join ride_details r using(booking_id)
-where b.booking_status = 'Success'
-		and r.customer_ratings >= 4
-group by b.date
-order by high_rated_ride_count desc
-limit 1
+-- (b) Vehicles with Most Number of Below Average Ratings  
+
+SELECT r.vehicle_type,  
+ 	COUNT(*) AS below_avg_rated_ride_count  
+FROM ride_details r  
+JOIN booking_details b USING (booking_id)  
+WHERE b.booking_status = 'Success'  
+ 	AND r.customer_ratings < (SELECT AVG(customer_ratings)  
+  	FROM ride_details)  
+GROUP BY r.vehicle_type  
+ORDER BY below_avg_rated_ride_count DESC  
+
+-- (c) Average Customer Ratings by Vehicle Type  
+
+SELECT r.vehicle_type,  
+ 	ROUND(AVG(r.customer_ratings), 1) AS avg_customer_ratings  
+FROM ride_details r  
+JOIN booking_details b USING (booking_id)  
+WHERE b.booking_status = 'Success'  
+GROUP BY r.vehicle_type  
+ORDER BY avg_customer_ratings DESC  
+
+-- Revenue from Top Pickup Locations  
+
+SELECT pickup_location, SUM(price) AS total_revenue  
+FROM ride_details  
+GROUP BY pickup_location  
+ORDER BY total_revenue DESC  
+LIMIT 5  
+
+-- Average Revenue Gained from Each Vehicle-Type  
+
+SELECT vehicle_type, ROUND(AVG(price), 2) AS avg_revenue  
+FROM ride_details  
+GROUP BY vehicle_type  
+ORDER BY avg_revenue DESC  
+
+-- Peak Time Analysis  
+
+SELECT  
+ CONCAT(  
+    LPAD(EXTRACT(HOUR FROM time)::TEXT, 2, '0'),  
+    ':00 - ',  
+    LPAD(EXTRACT(HOUR FROM time)::TEXT, 2, '0'),  
+    ':59'  
+ ) AS time_range,  
+ COUNT(*) AS ride_count  
+FROM booking_details  
+GROUP BY EXTRACT(HOUR FROM time)
+ORDER BY ride_count DESC  
+
+-- On Which Date in January, the Most Number of Rides were Booked  
+
+-- and What were the Total Successful Bookings and Average Customer Ratings on That Day  
+
+WITH most_booked_date AS (  
+	 SELECT b.date, COUNT(*) AS total_bookings  
+	 FROM booking_details b  
+	 JOIN ride_details r USING (booking_id)  
+	 GROUP BY b.date  
+),  
+
+succesful_bookings AS (  
+	 SELECT b.date, COUNT(*) AS successful_bookings,  
+	  ROUND(AVG(r.customer_ratings), 1) AS avg_customer_ratings  
+	 FROM booking_details b  
+	 JOIN ride_details r USING (booking_id)  
+	 WHERE b.booking_status = 'Success'  
+	 GROUP BY b.date  
+)  
+
+SELECT mbd.date, mbd.total_bookings,  
+	 sb.successful_bookings,  
+	 sb.avg_customer_ratings  
+FROM most_booked_date mbd  
+JOIN succesful_bookings sb USING (date)  
+ORDER BY mbd.total_bookings DESC  
+LIMIT 1  
+
+-- Date with Most Number of High Ratings (4 or more)  
+
+SELECT b.date, COUNT(*) AS high_rated_ride_count  
+FROM booking_details b  
+JOIN ride_details r USING (booking_id)  
+WHERE b.booking_status = 'Success'  
+  	AND r.customer_ratings >= 4  
+GROUP BY b.date  
+ORDER BY high_rated_ride_count DESC  
+LIMIT 1
