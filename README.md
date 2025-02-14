@@ -12,30 +12,30 @@ We have 3 datasets: `booking_details` `ride_details` `unsuccessful_rides`
 
 - **booking_details**
 
-	1. `Date:` _The date of the ride._
-	2. `Time:` _The time of the ride._
-	3. `Booking ID:` _Unique identifier for each booking._
-	4. `Booking Status:` _Status of the ride (e.g., Successful, Cancelled, Incomplete)._
+	- `Date:` _The date of the ride._
+ 	-  `Time:` _The time of the ride._
+	-. `Booking ID:` _Unique identifier for each booking._
+	- `Booking Status:` _Status of the ride (e.g., Successful, Cancelled, Incomplete)._
 
 - **ride_details**
 
-	1. `Booking ID:` _Unique identifier for each booking._
- 	2. `Vehicle Type:` _Type of vehicle used for the ride._
-	3. `Pickup Location:` _Location where the ride started._
-	4. `Drop Location:` _Location where the ride ended._
-	5. `Avg VTAT (Vehicle Turnaround Time):` _Average time taken by the vehicle to start the ride._
-	6. `Avg CTAT (Customer Turnaround Time):` _Average time taken by the customer to board the vehicle._
-	7. `Price:` _The monetary value of the booking._
-	8. `Payment Method:` _Payment method used (e.g., UPI, Wallet, Cash)._
-	9. `Ride Distance:` _Distance covered during the ride._
-	10. `Customer Ratings:` _Ratings given by the customer._
+	- `Booking ID:` _Unique identifier for each booking._
+ 	- `Vehicle Type:` _Type of vehicle used for the ride._
+	- `Pickup Location:` _Location where the ride started._
+	- `Drop Location:` _Location where the ride ended._
+	- `Avg VTAT (Vehicle Turnaround Time):` _Average time taken by the vehicle to start the ride._
+	- `Avg CTAT (Customer Turnaround Time):` _Average time taken by the customer to board the vehicle._
+	- `Price:` _The monetary value of the booking._
+	- `Payment Method:` _Payment method used (e.g., UPI, Wallet, Cash)._
+	- `Ride Distance:` _Distance covered during the ride._
+	- `Customer Ratings:` _Ratings given by the customer._
 
 - **unsuccessful_rides**
-	1. `Booking ID:` _Unique identifier for each booking._
-	2. `Booking Status:` _Status of the ride (e.g., Successful, Cancelled, Incomplete)._
-  	3. `Cancelled Rides by Customer Reason:` _Reason for cancellation by the customer._
-	4. `Cancelled Rides by Driver Reason:` _Reason for cancellation by the driver._
-	5. `Incomplete Ride Reason:` _Reason for an incomplete ride._
+	- `Booking ID:` _Unique identifier for each booking._
+	- `Booking Status:` _Status of the ride (e.g., Successful, Cancelled, Incomplete)._
+  	- `Cancelled Rides by Customer Reason:` _Reason for cancellation by the customer._
+	- `Cancelled Rides by Driver Reason:` _Reason for cancellation by the driver._
+	- `Incomplete Ride Reason:` _Reason for an incomplete ride._
 
 > **Key Observations:**
 
