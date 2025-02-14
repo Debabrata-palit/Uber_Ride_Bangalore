@@ -114,3 +114,30 @@ DELIMITER ','
 CSV HEADER;
 ```
 
+## Insights
+
+- The most common cancellation reasons are related to passenger count, sickness, and general customer issues.
+- Customer demand, miscellaneous issues, and vehicle breakdowns are major contributors to incomplete rides.
+- All vehicle types have nearly equal ride distribution, with UberXL having the highest ride count.
+- VTAT and CTAT times are very similar across all vehicle types, with eBikes and Moto being slightly faster.
+- Uber Go has the highest average booking value, while UberXL has the lowest.
+- Moto and eBike receive the most high-rated rides, while Go Sedan and Premier receive the least.
+- Go Sedan, Premier, and UberXL have the highest below-average ratings.
+- Hebbal, Bommanahalli, and Basaveshwaranagar generate the highest revenue.
+- UPI is the most used payment method, followed closely by Wallet, Card, and Cash.
+- Ride counts are consistently high from 8:00 AM - 1:00 PM, likely due to work/school commutes. Ride demand spikes again around 9:00-9:59 PM, likely due to people returning home from work.
+- Late-night rides decline steadily.
+
+## Recommendations
+
+- Reduce cancellations by offering incentives for drivers and ensuring better customer service to minimize incomplete rides.
+- Improve vehicle maintenance programs and enhance customer service training to address demand-related issues.
+- Consider promotional discounts or targeted marketing to push underperforming vehicle types.
+- Encourage more eBike and Moto rides for short-distance travel by offering incentives.
+- As Hebbal, Hormavu, and Bellandur have the highest ride counts, deploy more drivers in these areas during peak hours to reduce wait times.
+- As Richmond Town and Kammanahalli are the most common drop locations, implement dynamic pricing and optimize routing for these locations to improve efficiency.
+- Promote UberXL by offering discounts or bundling services for larger groups.
+- Improve customer experience for Go Sedan and Premier by training drivers on better customer service.
+- Investigate service complaints for these vehicle types and improve service quality for the lower-rated vehicle to balance customer satisfaction.
+- Focus on marketing efforts and driver availability in high revenue generating pickup locations to maximize profitability.
+- Introduce dynamic pricing during rush hours to optimize revenue and manage high demand.
