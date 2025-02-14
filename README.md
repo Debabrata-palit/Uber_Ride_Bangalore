@@ -14,7 +14,7 @@ We have 3 datasets: `booking_details` `ride_details` `unsuccessful_rides`
 
 	- `Date:` _The date of the ride._
  	-  `Time:` _The time of the ride._
-	-. `Booking ID:` _Unique identifier for each booking._
+	- `Booking ID:` _Unique identifier for each booking._
 	- `Booking Status:` _Status of the ride (e.g., Successful, Cancelled, Incomplete)._
 
 - **ride_details**
