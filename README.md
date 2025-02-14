@@ -140,4 +140,5 @@ CSV HEADER;
 - Improve customer experience for Go Sedan and Premier by training drivers on better customer service.
 - Investigate service complaints for these vehicle types and improve service quality for the lower-rated vehicle to balance customer satisfaction.
 - Focus on marketing efforts and driver availability in high revenue generating pickup locations to maximize profitability.
+- Increase driver availability from 8:00 AM - 12:00 PM to match peak demand and reduce wait times.
 - Introduce dynamic pricing during rush hours to optimize revenue and manage high demand.
