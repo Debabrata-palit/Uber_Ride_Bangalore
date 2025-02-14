@@ -145,7 +145,7 @@ FROM ride_details
 GROUP BY vehicle_type  
 ORDER BY avg_revenue DESC  
 
--- Peak Time Analysis  
+-- Hourly Ride Analysis  
 
 SELECT  
  CONCAT(  
