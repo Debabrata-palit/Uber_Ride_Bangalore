@@ -1,5 +1,3 @@
-/* Uber Ride Analysis - Bangalore (January 2024) */
-
 SELECT * FROM booking_details  
 SELECT * FROM ride_details  
 SELECT * FROM unsuccessful_rides  
@@ -130,6 +128,17 @@ WHERE b.booking_status = 'Success'
 GROUP BY r.vehicle_type  
 ORDER BY avg_customer_ratings DESC  
 
+-- (d) Date with Most Number of High Ratings (4 or more)  
+
+SELECT b.date, COUNT(*) AS high_rated_ride_count  
+FROM booking_details b  
+JOIN ride_details r USING (booking_id)  
+WHERE b.booking_status = 'Success'  
+  	AND r.customer_ratings >= 4  
+GROUP BY b.date  
+ORDER BY high_rated_ride_count DESC  
+LIMIT 1
+
 -- Revenue from Top Pickup Locations  
 
 SELECT pickup_location, SUM(price) AS total_revenue  
@@ -157,7 +166,7 @@ SELECT
  COUNT(*) AS ride_count  
 FROM booking_details  
 GROUP BY EXTRACT(HOUR FROM time)
-ORDER BY ride_count DESC  
+ORDER BY time_range
 
 -- On Which Date in January, the Most Number of Rides were Booked  
 
@@ -185,15 +194,4 @@ SELECT mbd.date, mbd.total_bookings,
 FROM most_booked_date mbd  
 JOIN succesful_bookings sb USING (date)  
 ORDER BY mbd.total_bookings DESC  
-LIMIT 1  
-
--- Date with Most Number of High Ratings (4 or more)  
-
-SELECT b.date, COUNT(*) AS high_rated_ride_count  
-FROM booking_details b  
-JOIN ride_details r USING (booking_id)  
-WHERE b.booking_status = 'Success'  
-  	AND r.customer_ratings >= 4  
-GROUP BY b.date  
-ORDER BY high_rated_ride_count DESC  
 LIMIT 1
