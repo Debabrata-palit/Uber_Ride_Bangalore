@@ -32,7 +32,6 @@ We have 3 datasets: `booking_details` `ride_details` `unsuccessful_rides`
 
 - **unsuccessful_rides**
 	- `Booking ID:` _Unique identifier for each booking._
-	- `Booking Status:` _Status of the ride (e.g., Successful, Cancelled, Incomplete)._
   	- `Cancelled Rides by Customer Reason:` _Reason for cancellation by the customer._
 	- `Cancelled Rides by Driver Reason:` _Reason for cancellation by the driver._
 	- `Incomplete Ride Reason:` _Reason for an incomplete ride._
@@ -81,7 +80,6 @@ CREATE TABLE ride_details (
 
 CREATE TABLE unsuccessful_rides (
     Booking_ID VARCHAR(20) PRIMARY KEY,
-    Booking_Status VARCHAR(50) NOT NULL,
     Cancelled_Rides_By_Customer_Reason VARCHAR(100),
     Cancelled_Rides_By_Driver_Reason VARCHAR(100),
     Incomplete_Ride_Reason VARCHAR(100)
@@ -106,7 +104,7 @@ DELIMITER ','
 CSV HEADER;
 
 COPY unsuccessful_rides (
-	Booking_ID, Booking_Status, Cancelled_Rides_By_Customer_Reason,
+	Booking_ID, Cancelled_Rides_By_Customer_Reason,
 	Cancelled_Rides_By_Driver_Reason, Incomplete_Ride_Reason
 )
 FROM 'path\to\unsuccessful_rides.csv' -- Replace with the actual file path
