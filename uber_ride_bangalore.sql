@@ -156,6 +156,12 @@ SELECT ROUND(SUM(r.price)/COUNT(DISTINCT b.date),2) AS revenue_per_day
 FROM ride_details r 
 JOIN booking_details b USING (booking_id)
 
+-- Successful Rides per Day
+
+SELECT ROUND(COUNT(*)*1.0 / COUNT(DISTINCT date),1) AS successful_rides_per_day
+FROM  booking_details
+WHERE booking_status = 'Success';
+
 -- Hourly Ride Analysis  
 
 SELECT  
