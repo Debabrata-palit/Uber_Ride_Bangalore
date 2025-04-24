@@ -117,13 +117,13 @@ CSV HEADER;
 - The most common cancellation reasons are related to passenger count, sickness, and general customer issues.
 - Customer demand, miscellaneous issues, and vehicle breakdowns are major contributors to incomplete rides.
 - All vehicle types have nearly equal ride distribution, with UberXL having the highest ride count.
-- VTAT and CTAT times are very similar across all vehicle types, with eBikes and Moto being slightly faster.
+- VTAT and CTAT times are very similar across all vehicle types.
 - Uber Go has the highest average booking value, while UberXL has the lowest.
 - Moto and eBike receive the most high-rated rides, while Go Sedan and Premier receive the least.
 - Go Sedan, Premier, and UberXL have the highest below-average ratings.
-- Hebbal, Bommanahalli, and Basaveshwaranagar generate the highest revenue.
+- Hebbal, and Bommanahalli generate the highest revenue (over ₹2.6M).
 - UPI is the most used payment method, followed closely by Wallet, Card, and Cash.
-- Ride counts are consistently high from 8:00 AM - 1:00 PM, likely due to work/school commutes. Ride demand spikes again around 9:00-9:59 PM, likely due to people returning home from work.
+- Ride counts are consistently high from 8:00-11:59 AM, likely due to work/school commutes. Ride demand spikes again around 7:00-10:59 PM, likely due to people returning home from work.
 - Late-night rides decline steadily.
 
 ## Recommendations
@@ -138,5 +138,5 @@ CSV HEADER;
 - Improve customer experience for Go Sedan and Premier by training drivers on better customer service.
 - Investigate service complaints for these vehicle types and improve service quality for the lower-rated vehicle to balance customer satisfaction.
 - Focus on marketing efforts and driver availability in high revenue generating pickup locations to maximize profitability.
-- Increase driver availability from 8:00 AM - 12:00 PM to match peak demand and reduce wait times.
+- Increase driver availability in the morning and evening to match peak demand and reduce wait times.
 - Introduce dynamic pricing during rush hours to optimize revenue and manage high demand.
