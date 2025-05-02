@@ -1,8 +1,10 @@
 # Uber Ride Analysis - Bangalore
 
-This project analyzes ride data from **Uber** in **Bangalore**, for **January 2024**, focusing on metrics like ride completion, cancellation reasons, revenue, and ratings. The analysis leverages **PostgreSQL** for database management and querying to provide actionable insights into ride patterns and customer behavior.
+This project analyzes ride data from **Uber** in **Bangalore**, for **January 2024**, focusing on metrics like ride completion, cancellation reasons, revenue, and ratings. The analysis leverages **PostgreSQL** (for database management and querying) and **Microsoft Power BI** (for visualization and report generation) to provide actionable insights into ride patterns and customer behavior.
 
 ![Uber Bengaluru](https://github.com/user-attachments/assets/77998053-4ac7-4cd4-a413-d2d2e13d2fc8)
+
+---
 
 ## Datasets Overview
 
@@ -45,11 +47,15 @@ We have 3 datasets: `booking_details` `ride_details` `unsuccessful_rides`
   - `Payment Method`, `Driver Ratings` and `Customer Ratings`: Missing data indicate that the rides were not successful.
 - There are 7 unique vehicle types and 51 unique pickup and drop locations.
 
+---
+
 ## Tech Stack
 
-- **Language:** `SQL`
+- **Language:** `SQL`, `DAX`
 - **Database:** `PostgreSQL`
-- **Tools:** `pgAdmin`
+- **Tools:** `pgAdmin`, `Power BI`
+
+---
 
 ## SQL Table Creation Query
 
@@ -112,6 +118,8 @@ DELIMITER ','
 CSV HEADER;
 ```
 
+---
+
 ## Insights
 
 - The most common cancellation reasons are related to passenger count, sickness, and general customer issues.
@@ -125,6 +133,8 @@ CSV HEADER;
 - UPI is the most used payment method, followed closely by Wallet, Card, and Cash.
 - Ride counts are consistently high from 8:00-11:59 AM, likely due to work/school commutes. Ride demand spikes again around 7:00-10:59 PM, likely due to people returning home from work.
 - Late-night rides decline steadily.
+
+---
 
 ## Recommendations
 
@@ -140,3 +150,11 @@ CSV HEADER;
 - Focus on marketing efforts and driver availability in high revenue generating pickup locations to maximize profitability.
 - Increase driver availability in the morning and evening to match peak demand and reduce wait times.
 - Introduce dynamic pricing during rush hours to optimize revenue and manage high demand.
+
+---
+
+## Report
+
+![Click Here](https://app.powerbi.com/view?r=eyJrIjoiMmQwMDVkMDUtNjk2YS00ODQ1LWE5YTUtYWMzNzUyZjA4MmIzIiwidCI6IjY0NWY1NDA5LWJkNjAtNDNhMS04ZmVmLTFhODNiNjU3YzIyMCJ9) to view the Power BI Report. 
+
+Happy analyzing! :bar_chart:
